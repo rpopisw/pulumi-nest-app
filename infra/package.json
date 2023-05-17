@@ -1,5 +1,5 @@
 {
-    "name": "nest-pulumi-ecr",
+    "name": "fargate-container",
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^16"
