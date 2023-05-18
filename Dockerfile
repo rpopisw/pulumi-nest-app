@@ -1,5 +1,5 @@
 # Use a base image with Node.js pre-installed
-FROM --platform=arm64 node:14
+FROM --platform=linux/amd64 node:14
 
 # Set the working directory in the container
 WORKDIR /usr/src/app

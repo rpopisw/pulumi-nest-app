@@ -8,24 +8,24 @@ const cpu = config.getNumber("cpu") || 512;
 const memory = config.getNumber("memory") || 128;
 
 // An ECS cluster to deploy into
-const cluster = new aws.ecs.Cluster("cluster-nest", {});
+const cluster = new aws.ecs.Cluster("cluster-1", {});
 
 // An ALB to serve the container endpoint to the internet
-const loadbalancer = new awsx.lb.ApplicationLoadBalancer("loadbalancer-nest", {});
+const loadbalancer = new awsx.lb.ApplicationLoadBalancer("loadbalancer-1", {});
 
 // An ECR repository to store our application's container image
-const repo = new awsx.ecr.Repository("repo-nest", {
+const repo = new awsx.ecr.Repository("repo-1", {
     forceDelete: true,
 });
 
 // Build and publish our application's container image from ./app to the ECR repository
-const image = new awsx.ecr.Image("image-nests", {
+const image = new awsx.ecr.Image("image-1", {
     repositoryUrl: repo.url,
     path: "..",
 });
 
 // Deploy an ECS Service on Fargate to host the application container
-const service = new awsx.ecs.FargateService("service-nest", {
+const service = new awsx.ecs.FargateService("service-1", {
     cluster: cluster.arn,
     assignPublicIp: true,
     taskDefinitionArgs: {
